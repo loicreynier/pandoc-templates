@@ -1,5 +1,5 @@
 {
-  description = "Pandoc LaTeX templates";
+  description = "Pandoc templates";
 
   inputs = {
     flake-utils = {

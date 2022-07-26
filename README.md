@@ -1,4 +1,4 @@
-# Pandoc LaTeX templates
+# Pandoc templates
 
 Collection of Pandoc template.
 
