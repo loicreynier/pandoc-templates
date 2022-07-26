@@ -1,0 +1,212 @@
+% -- Options for packages loaded later ---------------------------------------
+
+\PassOptionsToPackage{%
+  unicode,%
+  $for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+
+$if(sftitles)$
+\PassOptionsToPackage{sf,bf}{titlesec}
+$endif$
+
+$if(colorlinks)$
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+$endif$
+
+% -- Document class ----------------------------------------------------------
+
+\documentclass[
+$if(fontsize)$
+  $fontsize$,
+$endif$
+$if(lang)$
+  $babel-lang$,
+$endif$
+$if(papersize)$
+  $papersize$paper,
+$endif$
+$for(classoption)$
+  $classoption$$sep$,
+$endfor$
+]{article}
+
+% -- Packages ----------------------------------------------------------------
+
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+$if(tables)$
+\usepackage{longtable,booktabs,array}
+$if(multirow)$
+\usepackage{multirow}
+$endif$
+$endif$
+
+$if(phiso)$
+\usepackage{phiso}
+$else$
+\usepackage{amsmath}
+$endif$
+
+$if(pgfplots)$
+\usepackage{pgfplots}
+$if(pgfplotsconfig)$
+\input{$pgfplotsconfig$}
+$endif$
+$endif$
+
+% -- Hypersetup & links ------------------------------------------------------
+
+\hypersetup{
+$if(title-meta)$
+  pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+  pdfauthor={$author-meta$},
+$endif$
+$if(lang)$
+  pdflang={$lang$},
+$endif$
+$if(subject)$
+  pdfsubject={$subject$},
+$endif$
+$if(keywords)$
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+$endif$
+$if(colorlinks)$
+  colorlinks=true,
+  linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+  filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+  citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+  urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+$else$
+  hidelinks,
+$endif$
+  pdfcreator={LaTeX via pandoc}}
+
+% -- Title page --------------------------------------------------------------
+
+$if(sftitles)$
+\pretitle{\begin{center}\LARGE\bfseries\sffamily}
+\preauthor{\begin{center}\large\sffamily\lineskip 0.5em\begin{tabular}[t]{c}}
+\predate{\begin{center}\large\sffamily}
+\usepackage{abstract}
+\renewcommand\abstractnamefont{\bfseries\sffamily}
+$endif$
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+
+\author{$for(author)$$author$$sep$ \and $endfor$}
+
+$if(nodate)$
+\predate{}
+\postdate{}
+\date{}
+$else$
+\date{$date$}
+$endif$
+
+% -- Layout ------------------------------------------------------------------
+
+$if(fullpage)$
+\usepackage[$for(hyperrefoptions)$,$fullpageoptions$$endfor$]{fullpage}
+$endif$
+
+$if(sftitles)$
+\usepackage{abstract}
+\renewcommand\abstractnamefont{\bfseries\sffamily}
+\titleformat{\paragraph}[block]{\bfseries\sffamily\filcenter}{}{1em}{}
+$endif$
+
+$if(centerparagraph)$
+$if(sftitles)$
+\titleformat{\paragraph}[block]{\bfseries\sffamily\filcenter}{}{1em}{}
+$else$
+\titleformat{\paragraph}[block]{\filcenter}{}{1em}{}
+$endif$
+$endif$
+
+% -- References -------------------------------------------------------------
+
+$if(biblatex)$
+\usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
+$if(cleveref)$
+\usepackage{cleveref}
+$endif$
+
+$if(glossaries)$
+\usepackage[record]{glossaries-extra}
+$for(glossary)$
+\GlsXtrLoadResources[src={$glossary$}]
+$endfor$
+$endif$
+
+% -- Pandoc-specific macros --------------------------------------------------
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+  {% don't indent paragraphs
+    \setlength{\parindent}{0pt}
+    % turn on hanging indent if param 1 is 1
+    \ifodd #1
+    \let\oldpar\par
+    \def\par{\hangindent=\cslhangindent\oldpar}
+    \fi
+    % set entry spacing
+    \setlength{\parskip}{#2\cslentryspacingunit}
+  }%
+  {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+% -- Document ----------------------------------------------------------------
+
+\begin{document}
+
+$if(title)$
+$if(beamer)$
+\frame{\titlepage}
+$else$
+\maketitle
+$endif$
+$endif$
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$body$
+
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+
+\end{document}
