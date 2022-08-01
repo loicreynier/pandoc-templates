@@ -35,6 +35,9 @@ for documentation on the other variables.
 
 The following variables are supported by all the templates:
 
+`fontspec`
+: load the `fontspec` package
+
 `phiso`
 : load the [φso][phiso] package
 
