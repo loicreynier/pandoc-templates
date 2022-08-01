@@ -54,9 +54,11 @@ $endif$
 
 \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{metropolis}
 \usefonttheme{professionalfonts}
+$if(firamath)$
 \setmainfont{FiraGO}[Scale = 1.0]
 \setsansfont{FiraGO}
 \setmathfont{Fira Math}
+$endif(firamath)$
 $if(pfgplots)$
 \pgfplotsset{
   every axis/.append style={mlineplot},

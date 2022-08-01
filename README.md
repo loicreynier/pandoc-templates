@@ -67,3 +67,8 @@ The following variables are supported by all LaTeX templates:
 
 `sftitles`
 : make all the titles in sans serif using the `titlesec` package
+
+#### `beamer-metropolis.tex`
+
+`firamath`
+: use the Fira Math and Fira GO fonts
