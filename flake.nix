@@ -47,6 +47,8 @@
         };
       };
 
+      packages.default = pkgs.callPackage ./default.nix {};
+
       devShells.default = pkgs.mkShell {
         nativeBuildInputs = with pkgs; [
           pandoc
