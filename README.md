@@ -31,9 +31,9 @@ for documentation on the other variables.
 
 [pandoc-manual]: https://pandoc.org/MANUAL.html
 
-### General variables
+### LaTeX general variables
 
-The following variables are supported by all the templates:
+The following variables are supported by all LaTeX templates:
 
 `fontspec`
 : load the `fontspec` package
@@ -49,7 +49,7 @@ The following variables are supported by all the templates:
 
 [phiso]: https://github.com/loicreynier/phiso
 
-### Template specific variables
+### LaTeX template specific variables
 
 #### `article.tex`
 
