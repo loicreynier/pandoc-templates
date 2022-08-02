@@ -71,4 +71,7 @@ The following variables are supported by all LaTeX templates:
 #### `beamer-metropolis.tex`
 
 `firamath`
-: use the Fira Math and Fira GO fonts
+: use the Fira Math font
+
+`firago`
+: use the Fira GO font

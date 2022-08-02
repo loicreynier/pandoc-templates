@@ -54,9 +54,11 @@ $endif$
 
 \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{metropolis}
 \usefonttheme{professionalfonts}
-$if(firamath)$
+$if(firago)$
 \setmainfont{FiraGO}[Scale = 1.0]
 \setsansfont{FiraGO}
+$endif$
+$if(firamath)$
 \setmathfont{Fira Math}
 $endif$
 $if(pfgplots)$
