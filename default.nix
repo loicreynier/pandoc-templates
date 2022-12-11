@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
   meta = with lib; {
     homepage = "https://github.com/loicreynier/pandoc-templates";
-    description = "Personnal collection of Pandoc templates";
+    description = "Personal collection of Pandoc templates";
     license = licenses.unlicense;
     maintainers = with maintainers; [loicreynier];
   };
